@@ -1,0 +1,66 @@
+* Linked List
+- helps to increase as well as decrease it's size
+- not in contigous location/sequential locations
+- starting location of linked list is known as head
+- last element is known as tail of linked list
+- used in stack and queue not used in array
+- used in browsers
+  - browser-->google.com-->wikipedia-->nepal
+  - bowser<--google.com<--wikipedia<--nepal
+
+** Working
+- we are working on data as well as pointer so two things which data-type we don't know hence user-defined data type
+  - we use struct or class.
+    struct Node{
+          int data;
+	  Node* next;
+
+	  Node(data1, next1){
+	        data=data1
+		next=next1;
+	     }
+	}
+
+	- for initialization
+	  Node x=Node(2,nullptr);
+          Node* y=&x; //here y is the pointer to the location
+
+	  or use
+	  NOde* y=new Node(2,nullptr)
+	  new pointer gives the pointer to a memory location i.e. address if we don't add new it just creates an object
+	  so if you remove new and * and do cout y then it will give error, if you do y.data it will give 2 if you do y.next it will memory
+
+	  if you create a pointer we will have to print y->data or y->next
+
+	  *if Node y=Node (arr[0],nullptr), the object y is created so we can access data using y.data or y.next*
+	  _if Node* y=new Node(arr[0],nullptr), the pointer to the object is created so we have to use y->data or y-> next, you can't use y.data_
+
+	  
+	  
+	   
+
+- so now how will data be stored
+  - we are storing data and pointer
+    - in 32 bit system, integer will take --> 4 bytes and pointer will take --> 4 byte so in total 8 bytes
+    - in 64 bit system, integer will take --> 4 bytes and pointer will take --> 8 byte so in total 12 bytes
+      - if we are adding one more int data to a struct then +4 in both so 12 and 16 byte resp.
+
+
+- To traverse head
+  - never tamper/change the head
+
+
+- Delete node
+  - Node* temp=head;
+    head=head->next;
+    free(temp); in cpp delete temp;
+    return head;
+
+*Given a linked list means head of linked list is given*
+
+*Insertion at head means adding element before head if it has 5 elements then total elements will be 6*
+
+
+
+* Doubly Linked List
+

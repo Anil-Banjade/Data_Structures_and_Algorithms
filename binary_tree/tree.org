@@ -1,0 +1,27 @@
+* Binary tree
+- Tree where a node can have max of 2 node
+
+  - Root
+  - Children
+  - Leaf Node --> which ends
+  - ancestors
+
+** Types
+1. Full binary tree --> either 0 or 2 children
+2. Complete BT --> all levels are completely filled except the last level and the last level has all nodes in left as possible. so last level can't have node on right if it has only one node.
+3. Perfect BT --> all leafs are at same level.
+4. Balanced BT --> height of treee at max log(N) node=8 then log2(8)=3 so height can't be 4
+5. Degenerate BT --> n=4 , queue tree it also a linked list a single line
+
+
+** Binary Search Tree
+
+ *** Traversal
+ - BFS - Breadth first search
+ - DFS - Depth first search
+
+3 techniques for DFS
+- Inorder Traversal (Left Root Right)
+- Preorder Traversal (Root Left Right)
+- Post-Order Traversal (Left Right Root)
+

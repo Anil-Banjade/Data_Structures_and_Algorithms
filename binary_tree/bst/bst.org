@@ -1,0 +1,12 @@
+* Binary Seach Tree
+
+- Everything on left should be lesser than the node and everything on right should be greater than the node.
+- Left and right subtree should itself be a bst.
+
+- ideally duplicates are not allowed but in some cases there maybe.
+  if we want duplicates, you can research. we can insert node or we can have node,freq members
+
+- generally heights of bst are log2(N).
+- L<N<R
+
+  
