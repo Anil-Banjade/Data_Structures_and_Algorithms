@@ -1,0 +1,172 @@
+
+* Introduction
+
+** 1.1 Background and Motivation
+ 
+
+Today in the age of Internet, communication has been one of the major technological development of the last decade that has created waves across the market.
+The internet penetration is increasing day by day across the world so is social media penetration.
+Chatting whether that be text-based or an audio/video call has become the major necessity making the founders billionaire.
+ 
+Instant messaging has been on the rise since the early inception of the internet.
+Its simplicity and effectiveness is the main reason of it being used by everybody. 
+
+With advancement of technology, different companies came up with different ideas to attract users into their platform.
+To win this race different companies had different approach with the attempt to capture the market.
+With this rivalry, we came across groud-breaking innovation. With all the positive, the race also brought many problems along with them.
+Data security, misinformation, manipulating users sentiments, addictiveness being few of them.
+
+To overcome all of this and remain away from these highly dis-organized messaging service, we have come up the CLI based chat application which is purpose driven, specific to communication.
+It also provides different layers to maintain users privacy, data security and an inclusive and minimilistic user interface.
+
+
+
+
+** Outline
+
+This project is started with the approach of understanding how communication systems works in lower-level. We have decided to build it from scratch because it will teach us how different protocols, server-side communication works.
+It will help us dive deeper into understanding communication systems rather than  building it in application level.
+Though, we have different libraries and APIs to handle this but our goal is to go beyond these high level stuff and understand these terminologies from grass-root level like socket programming, different protocols, multithreading etc.
+We will be building a minimilistic CLI based chat application which will handle multi-user communication channels. We will have two layers one being the highly anonymous layer where you can join a channel by entering username and chat with other people on the channel in live time.
+And other layer being the private groups which will need user authentication inorder to talk in the channels.
+
+** Objectives
+- To showcase the use of different communication protocols.
+- To create user-friendly chatting application.
+- To protect user privacy.
+- To learn how data is stored, retrieved from database using various algorithm.
+  
+
+** Applications
+- It can be used for daily communication without having to worry about login and data security.
+- It can be used to maintain user-groups to network with like minded people.
+
+** Scope of the project
+It will invite users who love the concept of minimilism. It will have user-friendly and simple to use interface where people can come start texting within minute if not seconds.
+It will guarantee user data security and we are also expecting different encryption techniques as the next step of this project to maintain user privacy. It will completely be add-less away from the distraction that all messaging service brings.
+It will invite completely focused people who are trying to have a fruitful communication rather than roam here and there like in other messaging services.
+
+
+Why From Scratch?
+- To learn Deeper
+- We can build different technologies on top of this
+
+** Introduction to Sockets
+- What is socket Programming?
+- File descriptors--> integer value associated with the creation of socket used to represent the created socket
+  - different syscall
+- sockets are a way to speak to other programs using standard unix file descriptors.
+  - everything in unix is a file. explain
+    Stream Sockets
+    Datagram Sockets
+    stream sockets uses TCP
+    IP deals with routing
+-IPv4
+-IPv6
+-Port Numbers
+-Byte Order
+
+- Hello server/client
+  int fd = socket(AF_INET, SOCK_STREAM, 0);
+  AF_INET is for IPv4, use AF_INET6 for IPv6 or dual-stack socket. For simplicity, we’ll just use AF_INET throughout this book.
+  SOCK_STREAM is for TCP
+  
+** Client-Sever Background
+
+
+
+
+
+
+* Literature Review
+* Proposed System Architecture
+We are building a CLI based chat application to communicate in real time. We are following client-server model. It will have two layers. In the first layer, client can connect to the server and connect to the channel to which it want to connect. Once they are inside the channel client can chat with other clients in the channel. Text is the only communication medium this chat app will support. Once the user leaves the channel, the connection to the server will be lost. Clinet will again have to join the channel to communicate with other clients.
+In the second layer, we are implementing database into the chat app. This layer will have user authentication to join the server. User can join channels and communicate. User's data will be stored into the database. With addition of database, we are eliminating the problem of having to join channels everytime you open the app. Though, this layer won't be anonymous and reveal user's identity to other people on the server. This layer gives the freedom of creating closed channels between communities, friends or family members.
+* Methodology
+** Network Programming
+- Introduction to Sockets
+  sockets are the means of communication between different programs using standard unix file descriptors.
+  It follows the principle everything everything in unix is a file which means that when a system does input/output operations they do it by reading or writing to a file descriptor.
+  File Descriptors are the non-negative integers that are associated with the open file where file can be a file, network connection,software or anything which helps to identify resources in an operating system.
+  We will call socket() to get the socket descriptor and use different system calls like send(), recv() instead of read(), write() which makes data transmission easy.
+  
+  // We can use lsof to see file descriptors in our system.  
+  In our CLI chat app, socket is used to communicate between server and client.
+  In chat application, we have multiple users who wants to connect to the central server. Inorder to handle this, we have sockets which is used to establish connections between client and server.
+  The sever will create a socket and bind IP address and port number and listens for connections from client. Client will also create a socket and connect to the server's IP addresses and port number.
+  Once a client is connected to the server, another socket is created in sever side to handle communication with the client. After the connection is made, client can send messages to the server and then server can process the information as required.
+
+
+- There are mainly two types of sockets.
+  Stream Sockets and Datagram Sockets.
+  Stream sockets are reliable two-way connected communication streams. Eg:telnet or ssh, http.  In stream sockets data arrive in order.
+  TCP : is how stream sockets achieve this level of data transmission quality and also IP for routing.
+ Datagram Sockets are sometimes called connectionless sockets.
+  In Datagram Sockets data doesn't arrive in order.
+  They use IP for routing but don't use TCP they use UDP (user datagram protocol)
+
+  
+  In short, Socket are the means of communication between clinet and server in our application which will help us to establish communication in real time.
+  
+** IP Addresses (IPv4 and IPv6)
+IP address is an unique identifier for every device connected to the internet. Ip addresses are used by routers to transmit data between different devices.
+There are two types of IP addresses which are IPv4 and IPv6.
+IPv4 uses 32-bit addresses whereas IPv6 uses 128 bit addresses. The need of IPv6 was realized later when the devices in the world were increasing rapidly and IPv4 could only generate about 4 billion unique addresses.
+IPv6 can generate millions of IPv4 unique addresses which is almost impossible to have that amount of devices.
+IPv4 are commonly written in dots and numbers.
+192.0.0.112
+IPv6 are written using hexadecimal representation with each two bite chunk seperated by colon.
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+We will be using IPv6 addresses in our project to identify devices.
+
+** Port Numbers
+Port number is an integer value used to indentify processes in a system. We have IP addresses to identify the devices but if we want our system to handle multiple process/service, we will have have to use port numbers to distinguish between the multiple processes.
+
+** Server and Client
+A server is a computer that provides resources/services to different devices in the network which are known as clients.
+Server accepts connections from clients and handle different processes as specified.
+
+A client  is a device that requests resources/services from the server.
+Client connects to the server.
+In this age,almost every program in the network run on the client sever model.
+
+In our CLI based chat application, we are also using this model in which
+sever handles the communication between clients.
+It runs on one of the machine and waits for incoming connections on specific port. Once the connection is made, it facilitates the chatting between multiple clients.
+Whereas clients participates in the chatting process by connecting to server by specifying IP address.
+Once the connection is established, client can send messages, the server receives the messages and broadcast to other client in the channel.
+Server will also handle user authentication in the second layer of our application.
+
+
+** Event Loop 
+There are 3 ways to deal with concurrent connections in server-side network programming. They are: forking, multi-threading, and event loops. Forking creates new processes for each client connection to achieve concurrency. Multi-threading uses threads instead of processes. An event loop uses polling and nonblocking IO and usually runs on a single thread. Due to the overhead of processes and threads, most modern production-grade software uses event loops for networking.
+
+In socket programming, an event loop is a mechanism that allows you to handle multiple simultaneous socket connections efficiently. It's commonly used in network applications where a server needs to handle multiple client connections concurrently.
+
+The event loop works by continuously monitoring the state of multiple sockets and dispatching events based on their availability for reading or writing. It allows the server to perform non-blocking I/O operations and efficiently handle multiple connections without the need for creating individual threads or processes for each connection.
+
+** Data Structure:Hashtables
+
+** Data Serialization
+** The AVL Tree
+** Event Loop and Timers
+
+
+* Scope and Applications
+* Time Estimation
+* Feasibility Analysis
+* References
+
+
+* What would be done:
+In the project we will be working on the electrons highest probability to be found on the orbital. As we all are familiar with the concept of atom,electron and orbitals, It is very important to know what is  the position of electron in an atom. This concept came around 1920 after Albert Einstein presented his Relativity and then  Heisenberg came up with the “UNCERTAINTY PRINCIPLE” and later Schrodinger came up with Wave Equation which later gave birth to Quantum Mechanics. Planck is known as the father of Quantum Mechanics but the theory became popular in 1930s and credit goes to Heisenberg and Schrodinger. As this model deals with the subatomic particles and tries to explain one of the difficult phenomenon of Physics and it says Position and Momentum are uncertain if we try to calculate simultaneously.
+The  main purpose of our project is to try to find the maximum probability of finding electrons in an orbital. We will explain the wave function  both theoretically and graphically. For this we will be taking hydrogen and we will find the wave function and probability distribution of hydrogen from ground level.
+ As long as the electron is bound to the atom, we will not be able to say much more about its position than that it is in the atom. Certainly all models of the atom which describe the electron as a particle following a definite trajectory or orbit must be discarded.
+We can obtain an energy and one or more wavefunctions for every value of the principal quantum number, by solving Schrodinger's equation for the hydrogen atom. A knowledge of the wavefunctions, or probability amplitudes, allows us to calculate the probability distributions for the electron in any given quantum level. When the principal quantum number is given the wave function and the derived probability function are independent of direction and depend only on the distance between the electron and the nucleus. We will plot graph showing the variation in the functions as the electron is moved further and further from the nucleus in any one direction. 
+We will also have a live demonstration on how to create the 2-D histogram and analyse the data in ROOT and find out where there is maximum and where there is minimum probability of finding an electron. We will also try to simplify Schrodinger's wave function as simply as possible.
+
+
+How it will be done:
+We will start the explanation along with uncertainty principle and  explain the phenomenon followed by different examples and try to elaborate  them .As we have many theories to explain, first we will go with the theories and explain then  will head toward the examples.The quantum mechanical model will also be explained theoretically. We will be taking the data of electrons by CERN(As the actual data is required for valid result) and plotting them with the help of “ROOTS'' application which is the software used by CERN to calculate the data in LHC (Large Hadron Collider) too and has many features for data analysis like calculators and can also be used for not only making graphs but also for making histograms of different dimensions.For this  we will take the Crude Approximation of Electron in the position of a hydrogen Atom.(ie the graphs of the wave function ,radial distribution of function for the ground state hydrogen atom and probability distribution, will be made with the help of roots including other  graphs taking different things into consideration such as data and so on ). We will also be doing review of the models that are presented . We will try to include more things as possible to make the project more interesting.
+Why It should be done: 
+Since it is a really interesting topic to do the project on physics which deals with one of the most interesting branches on physics which is “Quantum mechanics” as well as it is the common interest of our team members.  We have learnt about the “Root primer” (Which is a data analysis framework) in the workshop on Particle physics. We thought that, It would be great to use what we have learnt. It can also be a great source of knowledge for us all. In the 18 19th  century physics evolved so much but we didn’t have the proper explanation to define the behavior of sub-atomic particles as well as other particles. 1905-1920 was the period of Einstein where he tried to explain the behavior of heavy particles. And the era of Quantum Mechanics began in which Hesienberg and Schrondinger had the major contribution. Though it is one of the best phenomena  in physics and people leave it just because of seeing the long equations. So, we want to make this topic as interesting as possible. It is also an educational activity. It can be a source of knowledge to all and develop interests in people . Our small effort can pave us  our paths to do more reachearches in future and find more as well as o f observers.we have done some research on it as well so this project can be a unique learning process for us . Learning is just not all about study but it also about fun. This project means a lot to us and  despite learning we want to enjoy it together as a team and have experiences of working together as a team .That's why we want this project to be done and we look forward to doing this project .

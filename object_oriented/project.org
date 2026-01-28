@@ -1,0 +1,115 @@
+* Osdev
+- Write your own operating system(yt)
+- Risc-V & FreeRTOS
+- XV6 operating system tutorial in yt maybe
+
+- Processes and Threads, Concurrency, Inter Process Communication, Distributed or parallel computing must be covered
+- Operating System 3 easy Steps (online book)  
+* Kernel
+* Bootloader
+* Custom Shell
+* Compiler/Assembler
+* Mapreduce
+- maye be just do Locally multi-threaded, can make it distributed.
+* Neural Network
+* Distributed Database or object store
+* Multi-threaded web server
+- Jacob Sorber
+* Chat App using sockets
+- Ozzadar Dev (https://www.youtube.com/watch?v=DVMHEDhYEr4&ab_channel=OzzadarDev)
+  Build on top of this
+
+
+* Build your own Redis using C/C++
+** Introduction to Sockets
+https://beej.us/
+https://beej.us/guide/bgnet/
+- server/client system
+- linux system calls we need to learn before we start socket programming
+  socket() syscall returns an fd
+  - what is fd read yourself
+  bind() associates an address to a socket fd
+  listen() enable us to accept connections to that address
+  accept() takes a listening fd when a client makes a connection to the listening address, the accept() returns an fd that represents the connection socket.
+  read()
+  write()
+  close()
+  connect()
+
+** Hello Server/Client
+** Protocol Parsing
+** The event loop and Nonblocking IO
+** The Event loop Implementation
+** Basic server:get, set, del
+* javid and javidx9 extra yt channels
+
+* IRC inspired
+-https://github.com/sidvishnoi/socket-chat/tree/master/cpp
+
+irssi
+
+* Network Programming
+- Intro
+** What is a socket?
+  socket() returns the socket descriptor and you communicate through it using send() and recv()
+  Two types of sockets, though there are many and raw socket(have a look)
+  | Stream Sockets(SOCK_STREAM) | Datagram Sockets(SOCK_DGRAM) |
+  Datagram Sockets are sometimes called connectionless sockets.
+  Stream sockets are reliable two-way connected communication streams. Eg:telnet or ssh, http
+  In stream sockets data arrive in order.
+  TCP : is how stream sockets achieve this level of data transmission quality and also IP
+
+  In Datagram Sockets data doesn't arrive in order.
+  They use IP for routing but don't use TCP they use UDP (user datagram protocol)
+  Eg: tftp (trivial file transfer protocol, a little brother to FTP), dhcpcd (a DHCP client), multiplayer games, streaming audio, video conferencing, etc.
+  Why are they connectionless? Well, basically, it’s because you don’t have to maintain an open connection as you do with stream sockets. You just build a packet, slap an IP header on it with destination information, and send it out. No connection needed.
+  Why would you use an unreliable underlying protocol? Two reasons: speed and speed. It’s way faster to fire-and-forget than it is to keep track of what has arrived safely and make sure it’s in order and all that. If you’re sending chat messages, TCP is great; if you’re sending 40 positional updates per second of the players in the world, maybe it doesn’t matter so much if one or two get dropped, and UDP is a good choice.
+
+
+- Low Level Nonsense and Network Theory
+
+** IP Addresses, structs and Data Munging
+- IP Addresses, version 4(IPv4) and version 6(IPv6)
+  IPv4:it has addresses made up of 4 bytes eg:192.0.2.111 2^32=4 billion addresses
+  IPv6: 2^128=340 trillion trillion numbers eg:2001:0db8:c9d2:aee5:73e3:934a:a5ae:9551
+
+  The address ::1 is the loopback address. It always means “this machine I’m running on now”. In IPv4, the loopback address is 127.0.0.1.
+
+  Finally, there’s an IPv4-compatibility mode for IPv6 addresses that you might come across. If you want, for example, to represent the IPv4 address 192.0.2.33 as an IPv6 address, you use the following notation: “::ffff:192.0.2.33”.
+
+- Subnets
+  In summary, subnets divide a big network into smaller parts, like dividing a neighborhood into sections of houses. Each subnet has its own range of addresses, devices in different subnets communicate through routers, and subnets help with organization, management, and security of the network.
+
+- Port Numbers
+  It’s a 16-bit number that’s like the local address for the connection.
+
+- Byte Order
+- struct s
+
+- IP Addresses, Part Deux
+- Private (Or Disconnected) Networks
+  NAT
+** Jumping from IPv4 to IPv6
+** System Calls or Bust
+** socket() Get the file Descriptor
+** bind() What port am I on?
+** connect() Hey,you!
+** listen() will somebody please call me?
+** accept() Thank you for calling port 3490
+** send() and recv() Talk to me
+** sendto() and recvfrom() talk to me, DGRAM-style
+** close() and shutdown() -Get outta my face
+** getpeername() -who are you?
+** gethostname() - who am I ?
+
+* Client-Server Background
+** A simple stream server
+** A simple stream client
+** Datagram Sockets
+
+* Slightly Advanced Techniques
+
+  
+* Build your own Database https://cstack.github.io/db_tutorial/parts/part1.html
+
+

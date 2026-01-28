@@ -1,0 +1,17 @@
+#include <iostream>
+
+int main(){
+  int array[5]{};
+  std::cout<<array[0];
+
+  /*   int arr1[];
+  for(int i=0;i<5;i++){
+      std::cin>>arr1[i];
+      }
+
+	for (int j=0;j<5;j++){
+	  std::cout<<arr1[j];
+	}
+
+  */
+}
